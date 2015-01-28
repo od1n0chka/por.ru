@@ -1,0 +1,16 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^admin$ %{REQUEST_URI}/ [R=301,L]
+RewriteRule ^admin/(.*?)$ /wp-admin/$1?%{QUERY_STRING} [QSA,L]
+RewriteRule ^login/?$ /wp-login.php [QSA,L]
+RewriteRule ^forgot/?$ /wp-login.php?action=lostpassword [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
